@@ -54,7 +54,7 @@ DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
 CLASS2COLOR: Optional[Dict[str, List[str]] or Literal["predefined"]] = {
     "ignored region": [230, 25, 75],
     "pedestrian": [60, 180, 75],
-    "people": [255, 225, 25],
+    "person": [255, 225, 25],
     "bicycle": [0, 130, 200],
     "car": [245, 130, 48],
     "van": [145, 30, 180],
