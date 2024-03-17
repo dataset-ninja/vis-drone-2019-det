@@ -13,7 +13,7 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "VisDrone-DET_test"
+PROJECT_NAME: str = "VisDrone-DET"
 PROJECT_NAME_FULL: str = "VisDrone-DET dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
