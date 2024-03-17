@@ -28,7 +28,8 @@ def convert_and_upload_supervisely_project(
     images_ext = ".jpg"
     anns_ext = ".txt"
 
-    ds_name_to_data = {"train": train_path, "val": val_path, "test": test_dev_path}
+    # ds_name_to_data = {"train": train_path, "val": val_path, "test": test_dev_path}
+    ds_name_to_data = {"test": test_dev_path}
 
     def create_ann(image_path):
         labels = []
@@ -78,7 +79,7 @@ def convert_and_upload_supervisely_project(
     idx_to_class = {
         0: sly.ObjClass("ignored region", sly.Rectangle),
         1: sly.ObjClass("pedestrian", sly.Rectangle),
-        2: sly.ObjClass("people", sly.Rectangle),
+        2: sly.ObjClass("person", sly.Rectangle),
         3: sly.ObjClass("bicycle", sly.Rectangle),
         4: sly.ObjClass("car", sly.Rectangle),
         5: sly.ObjClass("van", sly.Rectangle),
@@ -147,7 +148,7 @@ def convert_and_upload_supervisely_project(
 
     for images_names_batch in sly.batched(images_names, batch_size=batch_size):
         img_pathes_batch = [
-            os.path.join(data_path, image_name) for image_name in images_names_batch
+            os.path.join(test_challenge_path, image_name) for image_name in images_names_batch
         ]
 
         img_infos = api.image.upload_paths(dataset.id, images_names_batch, img_pathes_batch)
