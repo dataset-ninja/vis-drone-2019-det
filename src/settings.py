@@ -13,59 +13,109 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = None
-PROJECT_NAME_FULL: str = None
+PROJECT_NAME: str = "VisDrone-DET"
+PROJECT_NAME_FULL: str = "VisDrone-DET dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = None
-APPLICATIONS: List[Union[Industry, Domain, Research]] = None
-CATEGORY: Category = None
+LICENSE: License = License.Unknown()
+APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.SearchAndRescue()]
+CATEGORY: Category = Category.Safety(extra=[Category.Aerial(), Category.Drones()])
 
-CV_TASKS: List[CVTask] = None
-ANNOTATION_TYPES: List[AnnotationType] = None
+CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
+ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
 
-RELEASE_DATE: Optional[str] = None  # e.g. "YYYY-MM-DD"
+RELEASE_DATE: Optional[str] = "2021-10-04"  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
     RELEASE_YEAR: int = None
 
-HOMEPAGE_URL: str = None
+HOMEPAGE_URL: str = "https://github.com/VisDrone/VisDrone-Dataset"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = None
+PREVIEW_IMAGE_ID: int = 16044797
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
-GITHUB_URL: str = None
+GITHUB_URL: str = "https://github.com/dataset-ninja/vis-drone-det"
 # URL to GitHub repo on dataset ninja (e.g. "https://github.com/dataset-ninja/some-dataset")
 
 ##################################
 ### * Optional after uploading ###
 ##################################
-DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = None
+DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = {
+    "trainset": "https://drive.google.com/file/d/1a2oHjcEcwXP8oUF95qiwrqzACb2YlUhn/view?usp=sharing",
+    "valset": "https://drive.google.com/file/d/1bxK5zgLn0_L8x276eKkuYA_FzwCIjb59/view?usp=sharing",
+    "testset-dev": "https://drive.google.com/open?id=1PFdW_VFSCfZ_sTSZAGjQdifF_Xd5mf0V",
+    "testset-challenge": "https://drive.google.com/file/d/1KN8R3oioOvSXH492GEVk-Hx74nWHAcXT/view?usp=sharing",
+}
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
-CLASS2COLOR: Optional[Dict[str, List[str]] | Literal["predefined"]] = "predefined"
+CLASS2COLOR: Optional[Dict[str, List[str]] or Literal["predefined"]] = {
+    "ignored region": [230, 25, 75],
+    "pedestrian": [60, 180, 75],
+    "people": [255, 225, 25],
+    "bicycle": [0, 130, 200],
+    "car": [245, 130, 48],
+    "van": [145, 30, 180],
+    "truck": [70, 240, 240],
+    "tricycle": [240, 50, 230],
+    "awning tricycle": [210, 245, 60],
+    "bus": [250, 190, 212],
+    "motor": [0, 128, 128],
+    "other": [220, 190, 255],
+}
 # If specific colors for classes are needed, fill this dict (e.g. {"class1": [255, 0, 0], "class2": [0, 255, 0]})
 
 # If you have more than the one paper, put the most relatable link as the first element of the list
 # Use dict key to specify name for a button
-PAPER: Optional[Union[str, List[str], Dict[str, str]]] = None
+PAPER: Optional[Union[str, List[str], Dict[str, str]]] = "https://arxiv.org/pdf/2001.06303"
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
-REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = {
-    "GitHub": "some_link_to_repo_if_exists"
-}
+REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
 CITATION_URL: Optional[str] = None
-AUTHORS: Optional[List[str]] = None
-AUTHORS_CONTACTS: Optional[List[str]] = None
+AUTHORS: Optional[List[str]] = [
+    "Pengfei Zhu",
+    "Longyin Wen",
+    "Dawei Du",
+    "Xiao Bian",
+    "Heng Fan",
+    "Qinghua Hu",
+    "Haibin Ling",
+]
+AUTHORS_CONTACTS: Optional[List[str]] = [
+    "zhupengfei@tju.edu.cn",
+    "huqinghua@tju.edu.cn",
+    "longyin.wen@jd.com",
+    "ddu@albany.edu",
+    "xiao.bian@ge.com",
+    "heng.fan@unt.edu",
+    "hling@cs.stonybrook.edu",
+]
 
-ORGANIZATION_NAME: Optional[Union[str, List[str]]] = None
-ORGANIZATION_URL: Optional[Union[str, List[str]]] = None
+ORGANIZATION_NAME: Optional[Union[str, List[str]]] = [
+    "Tianjin University, China",
+    "Finance America Corporation, USA",
+    "University at Albany, USA",
+    "GE Global Research, USA",
+    "University of North Texas, USA",
+    "Stony Brook University, USA",
+]
+ORGANIZATION_URL: Optional[Union[str, List[str]]] = [
+    "https://www.tju.edu.cn",
+    "https://www.albany.edu/",
+    "https://www.ge.com/",
+    "https://www.unt.edu",
+    "https://www.stonybrook.edu/",
+]
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
-SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = None
+SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
+    "occlusions": ["no occlusion", "partial occlusion", "heavy occlusion"],
+    "truncations": ["partial occlusion", "no occlusion"],
+    "__POSTTEXT__": "Additionally, test images marked with ***challenge*** or ***dev*** tag",
+}
+
 TAGS: Optional[
     List[
         Literal[
