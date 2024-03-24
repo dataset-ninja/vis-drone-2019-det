@@ -13,16 +13,16 @@ from dataset_tools.templates import (
 ##################################
 # * Before uploading to instance #
 ##################################
-PROJECT_NAME: str = "VisDrone-DET"
-PROJECT_NAME_FULL: str = "VisDrone-DET dataset"
+PROJECT_NAME: str = "VisDrone2019-DET"
+PROJECT_NAME_FULL: str = "VisDrone2019-DET Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
 ##################################
-LICENSE: License = License.Unknown()
-APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.SearchAndRescue()]
-CATEGORY: Category = Category.Safety(extra=[Category.Aerial(), Category.Drones()])
+LICENSE: License = License.PubliclyAvailable()
+APPLICATIONS: List[Union[Industry, Domain, Research]] = [Domain.Surveillance()]
+CATEGORY: Category = Category.Surveillance()
 
 CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
@@ -37,7 +37,7 @@ HOMEPAGE_URL: str = "https://github.com/VisDrone/VisDrone-Dataset"
 PREVIEW_IMAGE_ID: int = 16044797
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
-GITHUB_URL: str = "https://github.com/dataset-ninja/vis-drone-det"
+GITHUB_URL: str = "https://github.com/dataset-ninja/vis-drone-2019-det"
 # URL to GitHub repo on dataset ninja (e.g. "https://github.com/dataset-ninja/some-dataset")
 
 ##################################
@@ -129,7 +129,7 @@ TAGS: Optional[
             "egocentric",
         ]
     ]
-] = None
+] = ["single-object-tracking", "multi-object-tracking", "crowd-counting"]
 
 
 SECTION_EXPLORE_CUSTOM_DATASETS: Optional[List[str]] = None

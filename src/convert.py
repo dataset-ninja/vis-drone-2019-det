@@ -29,19 +29,11 @@ def convert_and_upload_supervisely_project(
     anns_ext = ".txt"
 
     # ds_name_to_data = {"train": train_path, "val": val_path, "test": test_dev_path}
-    ds_name_to_data = {"test": test_dev_path}
+    ds_name_to_data = {"test dev": test_dev_path, "test challenge": test_challenge_path}
 
     def create_ann(image_path):
         labels = []
         tags = []
-
-        if ds_name == "test":
-            if image_path.split("/")[-3] == "test-dev":
-                test_tag = sly.Tag(dev)
-                tags.append(test_tag)
-            else:
-                test_tag = sly.Tag(challenge)
-                tags.append(test_tag)
 
         image_np = sly.imaging.image.read(image_path)[:, :, 0]
         img_height = image_np.shape[0]
@@ -91,8 +83,6 @@ def convert_and_upload_supervisely_project(
         11: sly.ObjClass("other", sly.Rectangle),
     }
 
-    challenge = sly.TagMeta("challenge", sly.TagValueType.NONE)
-    dev = sly.TagMeta("dev", sly.TagValueType.NONE)
     no_occlusion = sly.TagMeta("no occlusion", sly.TagValueType.NONE)
     partial_occlusion = sly.TagMeta("partial occlusion", sly.TagValueType.NONE)
     heavy_occlusion = sly.TagMeta("heavy occlusion", sly.TagValueType.NONE)
@@ -108,8 +98,6 @@ def convert_and_upload_supervisely_project(
     meta = sly.ProjectMeta(
         obj_classes=list(idx_to_class.values()),
         tag_metas=[
-            challenge,
-            dev,
             no_occlusion,
             partial_occlusion,
             heavy_occlusion,
