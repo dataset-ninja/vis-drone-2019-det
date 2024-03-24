@@ -1,6 +1,6 @@
 Dataset **VisDrone2019-DET** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](Set 'HIDE_DATASET=False' to generate download link)
+ [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/n/t/FA/7KnNezQ5IStZStDRbjFkRPyIuweyiUgDULrtg28Japgmzr2wPhNbYRpEq5E4l3xO3p9NyWiTeI1Olng1LfVPZCcg0csBIUa8j9vTW55gBRmyPcfKs8q8oWe0irjh.tar)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
