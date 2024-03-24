@@ -1,3 +1,3 @@
-# VisDrone-DET dataset
+# VisDrone2019-DET Dataset
 
-VisDrone-DET is a dataset for object detection task.
+VisDrone2019-DET is a dataset for object detection task.
