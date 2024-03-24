@@ -27,9 +27,9 @@ CATEGORY: Category = Category.Surveillance()
 CV_TASKS: List[CVTask] = [CVTask.ObjectDetection()]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.ObjectDetection()]
 
-RELEASE_DATE: Optional[str] = "2021-10-04"  # e.g. "YYYY-MM-DD"
+RELEASE_DATE: Optional[str] = None  # e.g. "YYYY-MM-DD"
 if RELEASE_DATE is None:
-    RELEASE_YEAR: int = None
+    RELEASE_YEAR: int = 2019
 
 HOMEPAGE_URL: str = "https://github.com/VisDrone/VisDrone-Dataset"
 # e.g. "https://some.com/dataset/homepage"
